@@ -8,9 +8,11 @@
 import UIKit
 
 
-class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource ,HomeView{
+    
     @IBOutlet weak var tableView: UITableView!
     var items : Array<Contact> = Array()
+    var presenter: HomePresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,73 +23,42 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
         initView()
     }
     
+    
+    func onLoadContacts(contact: [Contact]) {
+        if contact.count > 0{
+            refreshTableView(contact: contact)
+        }else{
+            
+        }
+    }
+    
+    func onContactDelete(deleted: Bool) {
+        if deleted {
+            presenter.apiContactList()
+        }else{
+            
+        }
+    }
+    
+    
+    
     func refreshTableView(contact: [Contact]){
         self.items = contact
         self.tableView.reloadData()
     }
     
-    func apiContactList(){
-        showProgres()
-        AFHttp.get(url: AFHttp.API_POST_LIST, params: AFHttp.paramsEmpty(), handler: {respons in
-            self.hideProgres()
-            switch respons.result{
-            case .success:
-                let contact = try! JSONDecoder().decode([Contact].self, from: respons.data!)
-                self.refreshTableView(contact: contact)
-            case let .failure(error):
-                print(error)
-            }
-        })
-    }
     
-    func apiContactDelete(contact:Contact){
-        showProgres()
-        AFHttp.del(url: AFHttp.API_POST_DELETE + contact.id!, params: AFHttp.paramsEmpty(), handler: {respons in
-            self.hideProgres()
-            switch respons.result{
-            case .success:
-                print(respons.result)
-                self.apiContactList()
-            case let .failure(error):
-                print(error)
-            }
-        })
-    }
-    
-    func apiContactCreate(name:String,phone:String){
-        showProgres()
-        AFHttp.post(url: AFHttp.API_POST_CREATE, params: AFHttp.paramsPostCreate(contact: Contact(name: name,phone: phone)), handler: {respons in
-            self.hideProgres()
-            switch respons.result{
-            case .success:
-                print(respons.result)
-                self.apiContactList()
-            case let .failure(error):
-                print(error)
-            }
-        })
-    }
-    
-    func apiContactUpdate(contact: Contact){
-        showProgres()
-        AFHttp.put(url: AFHttp.API_POST_UPDATE + contact.id!, params: AFHttp.paramsPostUpdate(contact: contact), handler: {respons in
-            self.hideProgres()
-            switch respons.result{
-            case .success:
-                print(respons.result)
-                self.apiContactList()
-            case let .failure(error):
-                print(error)
-            }
-        })
-        
-    }
+   
     
     // Mark: - Method
     func initView(){
         initNavigation()
         
-        apiContactList()
+        presenter = HomePresenter()
+        presenter.homeview = self
+        presenter.controller = self
+        
+        presenter.apiContactList()
     }
     
     func initNavigation(){
@@ -115,7 +86,7 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     // Mark: - Actions
     
     @objc func leftTapped(){
-        apiContactList()
+        presenter.apiContactList()
     }
     @objc func rightTapped(){
         callAddViewController()
@@ -148,7 +119,7 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     private func makeDeleteContextualAction(forRowAt indexpath: IndexPath, contact:Contact)->UIContextualAction{
         return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView,complition) in
             complition(true)
-            self.apiContactDelete(contact: contact)
+            self.presenter.apiContactDelete(contact: contact)
         }
     }
     
@@ -161,7 +132,7 @@ class HomeViewController: BaseViewController,UITableViewDelegate,UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        apiContactList()
+        presenter.apiContactList()
     }
     
 }

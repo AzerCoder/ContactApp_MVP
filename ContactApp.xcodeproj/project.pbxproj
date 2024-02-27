@@ -25,6 +25,12 @@
 		82E6AED82B8A3A5800F547A1 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E6AED62B8A3A5800F547A1 /* AddViewController.swift */; };
 		82E6AED92B8A3A5800F547A1 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E6AED72B8A3A5800F547A1 /* AddViewController.xib */; };
 		82E6AEDB2B8A3A6F00F547A1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E6AEDA2B8A3A6F00F547A1 /* BaseViewController.swift */; };
+		82F1A9E82B8CBD2F00F8C1F3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1A9E72B8CBD2F00F8C1F3 /* HomeView.swift */; };
+		82F1A9EA2B8CBD4000F8C1F3 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1A9E92B8CBD4000F8C1F3 /* HomePresenter.swift */; };
+		82F1A9EC2B8CBD4A00F8C1F3 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1A9EB2B8CBD4A00F8C1F3 /* EditView.swift */; };
+		82F1A9EE2B8CBD5400F8C1F3 /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1A9ED2B8CBD5400F8C1F3 /* EditPresenter.swift */; };
+		82F1A9F02B8CBD5E00F8C1F3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1A9EF2B8CBD5E00F8C1F3 /* AddView.swift */; };
+		82F1A9F22B8CBD6A00F8C1F3 /* AddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1A9F12B8CBD6A00F8C1F3 /* AddPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +52,12 @@
 		82E6AED62B8A3A5800F547A1 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		82E6AED72B8A3A5800F547A1 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		82E6AEDA2B8A3A6F00F547A1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		82F1A9E72B8CBD2F00F8C1F3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		82F1A9E92B8CBD4000F8C1F3 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		82F1A9EB2B8CBD4A00F8C1F3 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		82F1A9ED2B8CBD5400F8C1F3 /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
+		82F1A9EF2B8CBD5E00F8C1F3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		82F1A9F12B8CBD6A00F8C1F3 /* AddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				82E6AEDA2B8A3A6F00F547A1 /* BaseViewController.swift */,
-				82E6AECE2B8A39F400F547A1 /* HomeViewController.swift */,
-				82E6AECF2B8A39F400F547A1 /* HomeViewController.xib */,
-				82E6AED22B8A3A3000F547A1 /* EditViewController.swift */,
-				82E6AED32B8A3A3000F547A1 /* EditViewController.xib */,
-				82E6AED62B8A3A5800F547A1 /* AddViewController.swift */,
-				82E6AED72B8A3A5800F547A1 /* AddViewController.xib */,
+				82F1A9E12B8CBCBB00F8C1F3 /* Home */,
+				82F1A9E32B8CBCCA00F8C1F3 /* Edit */,
+				82F1A9E22B8CBCC300F8C1F3 /* Add */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -139,6 +148,63 @@
 				821BDF7F2B8A6272006B7E6A /* Contact.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		82F1A9E12B8CBCBB00F8C1F3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				82F1A9E42B8CBD0500F8C1F3 /* Presenter */,
+				82E6AECE2B8A39F400F547A1 /* HomeViewController.swift */,
+				82E6AECF2B8A39F400F547A1 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		82F1A9E22B8CBCC300F8C1F3 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				82F1A9E62B8CBD1D00F8C1F3 /* Presenter */,
+				82E6AED62B8A3A5800F547A1 /* AddViewController.swift */,
+				82E6AED72B8A3A5800F547A1 /* AddViewController.xib */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		82F1A9E32B8CBCCA00F8C1F3 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				82F1A9E52B8CBD0F00F8C1F3 /* Presenter */,
+				82E6AED22B8A3A3000F547A1 /* EditViewController.swift */,
+				82E6AED32B8A3A3000F547A1 /* EditViewController.xib */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		82F1A9E42B8CBD0500F8C1F3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				82F1A9E72B8CBD2F00F8C1F3 /* HomeView.swift */,
+				82F1A9E92B8CBD4000F8C1F3 /* HomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		82F1A9E52B8CBD0F00F8C1F3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				82F1A9EB2B8CBD4A00F8C1F3 /* EditView.swift */,
+				82F1A9ED2B8CBD5400F8C1F3 /* EditPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		82F1A9E62B8CBD1D00F8C1F3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				82F1A9EF2B8CBD5E00F8C1F3 /* AddView.swift */,
+				82F1A9F12B8CBD6A00F8C1F3 /* AddPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,15 +290,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82F1A9F02B8CBD5E00F8C1F3 /* AddView.swift in Sources */,
 				82E6AED82B8A3A5800F547A1 /* AddViewController.swift in Sources */,
 				82E6AED42B8A3A3000F547A1 /* EditViewController.swift in Sources */,
+				82F1A9EC2B8CBD4A00F8C1F3 /* EditView.swift in Sources */,
 				82E6AEB92B8A396D00F547A1 /* AppDelegate.swift in Sources */,
+				82F1A9E82B8CBD2F00F8C1F3 /* HomeView.swift in Sources */,
 				82E6AEBB2B8A396D00F547A1 /* SceneDelegate.swift in Sources */,
 				821BDF832B8A6356006B7E6A /* ContactTableViewCell.swift in Sources */,
 				8277B68E2B8B3CB700C8FE16 /* Network.swift in Sources */,
+				82F1A9F22B8CBD6A00F8C1F3 /* AddPresenter.swift in Sources */,
 				82E6AED02B8A39F400F547A1 /* HomeViewController.swift in Sources */,
 				821BDF802B8A6272006B7E6A /* Contact.swift in Sources */,
 				82E6AEDB2B8A3A6F00F547A1 /* BaseViewController.swift in Sources */,
+				82F1A9EA2B8CBD4000F8C1F3 /* HomePresenter.swift in Sources */,
+				82F1A9EE2B8CBD5400F8C1F3 /* EditPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

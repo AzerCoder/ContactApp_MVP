@@ -7,21 +7,32 @@
 
 import UIKit
 
-class AddViewController: BaseViewController {
-
+class AddViewController: BaseViewController,AddView {
+   
     @IBOutlet weak var nameFild: UITextField!
     @IBOutlet weak var phoneFild: UITextField!
+    var hvc = HomeViewController()
+    var presenter: AddPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter = AddPresenter()
+        presenter.addview = self
+        presenter.controller = self
+        
         // Do any additional setup after loading the view.
     }
+    
+    func onAddContact(contact: Contact) {
+    
+    }
+    
 
     @IBAction func saveButton(_ sender: Any) {
-        HomeViewController().apiContactCreate(name: nameFild.text!, phone: phoneFild.text!)
+        let contact = Contact(name: nameFild.text!,phone: phoneFild.text!)
+        presenter.apiContactCreate(contact: contact)
         navigationController?.popViewController(animated: true)
-        HomeViewController().apiContactList()
     }
 
     
